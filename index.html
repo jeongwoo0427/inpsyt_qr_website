@@ -1,62 +1,27 @@
-<script>
-
-    function mo_chk() {
-
-        var os;
-
-        var mobile = (/iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase()));
-
-        if (mobile) {
-            var userAgent = navigator.userAgent.toLowerCase();
-            if (userAgent.search("android") > -1) {
-                return os = "android";
-            } else if ((userAgent.search("iphone") > -1) || (userAgent.search("ipod") > -1) || (userAgent.search("ipad") > -1)) {
-                return os = "ios";
-            } else {
-                return os = "otehr";
-            }
-
-        } else {
-            return os = "pc";
+<HTML>
+<HEAD>
+    <TITLE> App Install Check!! </TITLE>
+    <script>
+        function checkApplicationInstall() {
+            document.checkframe.location = "meetingapp://com.kkumsoft.inpsyt_meeting";
+            setTimeout("checkApplicationInstall_callback()", 500);
         }
-    }
 
-
-    function action_app_instagram() {
-        var result_mo_chk = mo_chk();
-
-        if (result_mo_chk != "pc") {
-            if (result_mo_chk == "ios") {
-
-                setTimeout(function () {
-                   // window.open(ios_appstore_url);
-                }, 1500);
-
-                location.href = 'instagram://media';
-            } else {
-                location.href = 'intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end';
-                setTimeout(function () {
-                    // window.open(ios_appstore_url);
-                    location.href = 'google.com';
-                }, 1500);
+        function checkApplicationInstall_callback() {
+            try {
+                var s = document.checkframe.document.body.innerHTML;
+                // 어플리케이션 설치되어있음
+            } catch (e) {
+                // 어플리케이션 설치 안 되어있음
+                alert('app not lnstall');
+                document.checkframe.location = 'market://details?id=com.easyfax.easyfaxapp2';
             }
         }
-    }
+    </script>
+</HEAD>
 
-    function agg() {
-        alert('hi');
-    }
-
-</script>
-
-
-<html>
-<head>
-    
-</head>
-<body onload="action_app_instagram();">
-    <span onclick="action_app_instagram();">
-        Instagram App 실행23
-    </span>
-</body>
-</html>
+<BODY onLoad="checkApplicationInstall()">
+    easy fax scheme call!</br>
+    <iframe name="checkframe" width="0px" height="0px"></iframe>
+</BODY>
+</HTML> 
