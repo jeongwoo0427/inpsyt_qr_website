@@ -1,125 +1,49 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-</head>
-
-<body>
-
-    <div id="os_name"></div>
-
-    <h1><a href="#" onclick="appStart()" data-role="button">Jusikon Start (onclick event)</a></h1>
-
-    <iframe id="checkframe" name="checkframe" src="check.html" width="0" height="0" style="display:none"></iframe>
-
-</body>
-
-
 <script>
+    function mo_chk() {
 
-    
+        var os;
 
+        var mobile = (/iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase()));
 
-    // OS 확인
-
-    var uAgent = navigator.userAgent.toLocaleLowerCase();
-
-    if (uAgent.indexOf("android") != -1)
-
-        OSName = "android";
-
-    else if (uAgent.indexOf("iphone") != -1 || uAgent.indexOf("ipad") != -1 || uAgent.indexOf("ipod") != -1)
-
-        OSName = "ios";
-
-    else
-
-        OSName = "is not mobile";
-
-
-
-    // 확인한 OS이름을 HTML에 표시
-
-    document.getElementById("os_name").innerHTML = "<h1>Your os : " + OSName + "</h1>";
-
-
-
-    // 어플 실행
-
-    function appStart() {
-
-        if ("ios" == OSName || "android" == OSName) {
-
-            document.checkframe.location = "app_scheme://";
-
-            setTimeout("checkApplicationInstall_callback()", 1500);
+        if (mobile) {
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.search("android") > -1) {
+                return os = "android";
+            } else if ((userAgent.search("iphone") > -1) || (userAgent.search("ipod") > -1) || (userAgent.search("ipad") > -1)) {
+                return os = "ios";
+            } else {
+                return os = "otehr";
+            }
 
         } else {
-
-            // 어플 실행하지 않고 종료
-
-            return;
-
+            return os = "pc";
         }
-
     }
 
 
+    function action_app_instagram(android_url, ios_url, ios_appstore_url) {
+        var result_mo_chk = mo_chk();
 
-    // Android의경우 어플실행 확인 및 설치페이지 이동
+        if (result_mo_chk != "pc") {
+            if (result_mo_chk == "ios") {
 
-    // IOS의 경우 어플실행명령 후 1.5초 후에 설치페이지 이동에 대한 확인창 발생
-
-    function checkApplicationInstall_callback() {
-
-
-
-        if ("android" == OSName) {
-
-            try {
-
-                var s = document.checkframe.document.body.innerHTML;
-
-                // 어플리케이션 설치되어있음
-
-            } catch (e) {
-
-                // 어플리케이션 설치 안 되어있음
-
-                // IOS 는 이영역으로 넘어오질 않음..
-
-                if (window.confirm("Not installed - android ")) {
-
-                    var android_url = "google.com";
-
-                    location.href = android_url;
-
-                }
-
-            }
-
-        }
-
-
-
-        if ("ios" == OSName) {
-
-            if (window.confirm("Not installed - ios")) {
-
-                var ios_url = "https://appsto.re/kr/asdfg";
+                setTimeout(function () {
+                    window.open(ios_appstore_url);
+                }, 1500);
 
                 location.href = ios_url;
-
+            } else {
+                location.href = android_url;
             }
-
-
-
         }
-
     }
-
 </script>
 
-</html> 
+
+<html>
+<body>
+    <span onclick="action_app_instagram('intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+        Instagram App 실행
+    </span>
+</body>
+</html>
