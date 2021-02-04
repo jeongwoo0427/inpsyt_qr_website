@@ -1,9 +1,5 @@
 <script>
 
-    window.onload = function () {
-        action_app_instagram('intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8');
-    }
-
     function mo_chk() {
 
         var os;
@@ -26,7 +22,7 @@
     }
 
 
-    function action_app_instagram(android_url, ios_url, ios_appstore_url) {
+    function action_app_instagram() {
         var result_mo_chk = mo_chk();
 
         if (result_mo_chk != "pc") {
@@ -36,9 +32,9 @@
                    // window.open(ios_appstore_url);
                 }, 1500);
 
-                location.href = ios_url;
+                location.href = 'instagram://media';
             } else {
-                location.href = android_url;
+                location.href = 'intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end';
             }
         }
     }
@@ -54,9 +50,9 @@
 <head>
     
 </head>
-<body onload="agg();">
-    <span onclick="action_app_instagram('intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8');">
-        Instagram App 실행2
+<body onload="action_app_instagram();">
+    <span onclick="action_app_instagram();">
+        Instagram App 실행23
     </span>
 </body>
 </html>
