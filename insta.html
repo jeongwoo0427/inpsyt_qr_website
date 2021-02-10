@@ -21,7 +21,7 @@ function mo_chk(){
 }
 
 
-function action_app_instagram(android_url , ios_url , ios_appstore_url){
+function action_app(android_url , ios_url , ios_appstore_url){
 	var result_mo_chk = mo_chk();
 
 	if(result_mo_chk!="pc"){
@@ -41,7 +41,7 @@ function action_app_instagram(android_url , ios_url , ios_appstore_url){
 
 
 <html>
-    <body onload="action_app_instagram('intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+    <body onload="action_app('intent://instagram.com/#Intent;package=com.instagram.android;scheme=https;end', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
         <span onclick="">
             Instagram App 실행 
         </span>
