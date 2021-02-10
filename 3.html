@@ -1,29 +1,54 @@
-<HTML>
-<HEAD>
-    <TITLE> App Install Check!! </TITLE>
-    <script>
-        function checkApplicationInstall() {
-            location.href = "meetingapp://com.kkumsoft.inpsyt_meeting/room=3";
-            setTimeout("checkApplicationInstall_callback()", 1500);
-        }
 
-        function checkApplicationInstall_callback() {
-            try {
-                var s = document.checkframe.document.body.innerHTML;
-                // 어플리케이션 설치되어있음
-            } catch (e) {
-                // 어플리케이션 설치 안 되어있음
-              //  alert('app not lnstall');
-                document.checkframe.location = 'market://details?id=com.easyfax.easyfaxapp2';
+<script>
+    function mo_chk() {
+
+        var os;
+
+        var mobile = (/iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase()));
+
+        if (mobile) {
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.search("android") > -1) {
+                return os = "android";
+            } else if ((userAgent.search("iphone") > -1) || (userAgent.search("ipod") > -1) || (userAgent.search("ipad") > -1)) {
+                return os = "ios";
+            } else {
+                return os = "otehr";
             }
 
-            window.location.href = 'https://drive.google.com/uc?id=1Gu2crSjUiH2EjBbUGz0z7G8NlxfoO_om&export=download';
+        } else {
+            return os = "pc";
         }
-    </script>
-</HEAD>
+    }
 
-<BODY onLoad="checkApplicationInstall()">
-    Holland</br>
-    <iframe name="checkframe" width="0px" height="0px"></iframe>
-</BODY>
-</HTML> 
+
+    function action_app(android_url, playstore_url, ios_url, ios_appstore_url) {
+        var result_mo_chk = mo_chk();
+
+        if (result_mo_chk != "pc") {
+            if (result_mo_chk == "ios") {
+
+                setTimeout(function () {
+                    window.location.href = ios_appstore_url;
+                }, 1500);
+
+                location.href = ios_url;
+            } else {
+                setTimeout(function () {
+                    window.location.href = playstore_url;
+                }, 1500);
+
+                location.href = android_url;
+            }
+        }
+    }
+</script>
+
+
+<html>
+<body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=3','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+    <span onclick="">
+        MLST입장중
+    </span>
+</body>
+</html>
