@@ -25,6 +25,8 @@
     function action_app(android_url, playstore_url, ios_url, ios_appstore_url) {
         var result_mo_chk = mo_chk();
 
+
+
         if (result_mo_chk != "pc") {
             if (result_mo_chk == "ios") {
 
@@ -33,14 +35,12 @@
                 }, 700);
 
                 location.replace(ios_url);
-                window.close();
             } else {
                 setTimeout(function () {
                     window.location.replace(playstore_url);
                 }, 700);
 
                 location.replace(android_url);
-                window.close();
             }
         }
     }
