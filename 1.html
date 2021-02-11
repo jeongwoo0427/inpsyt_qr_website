@@ -22,29 +22,27 @@
     }
 
 
-    function action_app(android_url,playstore_url, ios_url, ios_appstore_url) {
+    function action_app(android_url, playstore_url, ios_url, ios_appstore_url) {
         var result_mo_chk = mo_chk();
+
+
 
         if (result_mo_chk != "pc") {
             if (result_mo_chk == "ios") {
 
-                try {
-                    location.href = ios_url;
-                } catch {
-                    window.location.href = ios_appstore_url;
+                setTimeout(function () {
+                    window.location.replace(ios_appstore_url);
+                }, 1000);
 
-                }
-                window.close;
-
+                location.replace(ios_url);
             } else {
 
-                try {
-                    location.href = android_url;
-                } catch {
-                    window.location.href = playstore_url;
-                }
+                setTimeout(function () {
+                    window.location.replace(playstore_url);
+                }, 1000);
 
-                window.close;
+
+                location.replace(android_url);
             }
         }
     }
@@ -52,9 +50,9 @@
 
 
 <html>
-<body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=1','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+<body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=2','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
     <span onclick="">
-        WISC Loading...
+        WISK is loading
     </span>
 </body>
 </html>
