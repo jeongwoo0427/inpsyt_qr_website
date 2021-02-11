@@ -36,9 +36,7 @@
 
                 location.replace(ios_url);
             } else {
-                setTimeout(function () {
-                    window.location.replace(playstore_url);
-                }, 700);
+             
 
                 location.replace(android_url);
             }
@@ -48,9 +46,9 @@
 
 
 <html>
-<body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=2','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+<body onload="action_app('intent://inpsyt_meeting#Intent;package=com.kkumsoft.inpsyt_meeting;scheme=meetingapp;end;','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
     <span onclick="">
-        MLST Now loading...
+        MLST Now loading by intent
     </span>
 </body>
 </html>
