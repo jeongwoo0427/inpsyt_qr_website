@@ -28,17 +28,20 @@
         if (result_mo_chk != "pc") {
             if (result_mo_chk == "ios") {
 
-                setTimeout(function () {
+                try {
+                    location.href = ios_url;
+                } catch {
                     window.location.href = ios_appstore_url;
-                }, 1500);
+                }
 
-                location.href = ios_url;
             } else {
-                setTimeout(function () {
-                    window.location.href = playstore_url;
-                }, 1500);
 
-                location.href = android_url;
+                try {
+                    location.href = android_url;
+                } catch {
+                    window.location.href = playstore_url;
+                }
+
             }
         }
     }
@@ -48,7 +51,7 @@
 <html>
 <body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=1','https://drive.google.com/u/0/uc?id=17B7OS0GuXZv8UUnEX5wXxAGxRJNpLJh-&export=download', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
     <span onclick="">
-        WISC입장중
+        WISC입장
     </span>
 </body>
 </html>
