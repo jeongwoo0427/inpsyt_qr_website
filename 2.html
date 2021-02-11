@@ -29,16 +29,16 @@
             if (result_mo_chk == "ios") {
 
                 setTimeout(function () {
-                    window.location.replace = ios_appstore_url;
+                    window.location.replace(ios_appstore_url);
                 }, 700);
 
-                location.replace = ios_url;
+                location.replace(ios_url);
             } else {
                 setTimeout(function () {
-                    window.location.replace = playstore_url;
+                    window.location.replace(playstore_url);
                 }, 700);
 
-                location.replace = android_url;
+                location.replace(android_url);
             }
         }
     }
