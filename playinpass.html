@@ -1,0 +1,54 @@
+
+<script>
+    function checkModel() {
+
+        var os;
+
+        var mobile = (/iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase()));
+
+        if (mobile) {
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.search("android") > -1) {
+                return os = "android";
+            } else if ((userAgent.search("iphone") > -1) || (userAgent.search("ipod") > -1) || (userAgent.search("ipad") > -1)) {
+                return os = "ios";
+            } else {
+                return os = "otehr";
+            }
+
+        } else {
+            return os = "pc";
+        }
+    }
+
+
+    function action_app(android_url, playstore_url, ios_url, ios_appstore_url) {
+        var modelResult = checkModel();
+
+        if (modelResult != "pc") {
+            if (modelResult == "ios") {
+
+                setTimeout(function () {
+                    window.location.href = ios_appstore_url;
+                }, 1500);
+
+                location.href = ios_url;
+            } else {
+                setTimeout(function () {
+                    window.location.href = playstore_url;
+                }, 1500);
+
+                location.href = android_url;
+            }
+        }
+    }
+</script>
+
+
+<html>
+<body onload="action_app('meetingapp://com.kkumsoft.inpsyt_meeting/room=4','https://play.google.com/store/apps/details?id=com.kkumsoft.inpsyt_meeting', 'instagram://media', 'https://itunes.apple.com/kr/app/instagram/id389801252?mt=8')">
+    <span onclick="">
+        Playin 심리검사 앱으로 이동합니다.
+    </span>
+</body>
+</html>
